@@ -59,11 +59,11 @@ class SecurityConfig(
      * HTTP 요청에 대한 보안 필터 체인을 구성합니다.
      * 
      * 접근 권한:
-     * - /api/auth/...: 누구나 접근 가능 (로그인, 회원가입)
-     * - /api/products/...: 누구나 접근 가능 (상품 조회)
-     * - /uploads/...: 누구나 접근 가능 (상품 이미지)
-     * - /swagger-ui/...: 누구나 접근 가능 (API 문서)
-     * - /api/admin/...: ADMIN 권한 필요
+     * - /api/auth/**: 누구나 접근 가능 (로그인, 회원가입)
+     * - /api/products/**: 누구나 접근 가능 (상품 조회)
+     * - /uploads/**: 누구나 접근 가능 (상품 이미지)
+     * - /swagger-ui/**: 누구나 접근 가능 (API 문서)
+     * - /api/admin/**: ADMIN 권한 필요
      * - 그 외: 인증 필요
      * 
      * @param http HttpSecurity 인스턴스
