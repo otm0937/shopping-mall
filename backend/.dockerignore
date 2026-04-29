@@ -1,0 +1,35 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+
+# Build outputs
+build
+.gradle
+bin
+target
+.kotlin
+
+# Dependencies (will be installed in container)
+node_modules
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Environment and secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Documentation
+HELP.md
+README.md
+
+# OS files
+.DS_Store
