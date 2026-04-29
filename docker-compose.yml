@@ -1,0 +1,79 @@
+services:
+  # Database
+  mariadb:
+    image: mariadb:11.2
+    container_name: shopping-mall-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass123
+      MYSQL_DATABASE: shopping_mall_db
+      MYSQL_USER: shopping_mall_user
+      MYSQL_PASSWORD: shopping_mall_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - shopping-mall-network
+
+  # Backend API (Spring Boot)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: shopping-mall-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://mariadb:3306/shopping_mall_db
+      SPRING_DATASOURCE_USERNAME: shopping_mall_user
+      SPRING_DATASOURCE_PASSWORD: shopping_mall_pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      APP_UPLOAD_DIR: /app/uploads
+      ADMIN_USERNAME: root
+      ADMIN_PASSWORD: root
+      ADMIN_NAME: 관리자
+      ADMIN_EMAIL: admin@shoppingmall.com
+      JWT_SECRET: shopping-mall-secret-key-please-change-in-production
+    ports:
+      - "8080:8080"
+    volumes:
+      - uploads_data:/app/uploads
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    networks:
+      - shopping-mall-network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/api/products"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # Frontend (Next.js)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: shopping-mall-frontend
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8080
+      API_BASE_URL: http://backend:8080
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - shopping-mall-network
+
+volumes:
+  mariadb_data:
+  uploads_data:
+
+networks:
+  shopping-mall-network:
+    driver: bridge
