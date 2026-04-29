@@ -14,6 +14,16 @@ Thumbs.db
 .classpath
 .project
 .settings/
+.apt_generated
+.factorypath
+.springBeans
+.sts4-cache
+
+# Build Tools
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
 
 # Environment & Secrets
 .env
@@ -23,6 +33,12 @@ Thumbs.db
 *.key
 *.p12
 *.pfx
+
+# AI / Prompt Files
+AGENTS.md
+CLAUDE.md
+.cursor/
+.opencode/
 
 # Backend - Spring Boot
 backend/.gradle/
@@ -34,6 +50,11 @@ backend/*.jar
 backend/*.war
 !backend/gradle/wrapper/gradle-wrapper.jar
 backend/.kotlin/
+backend/HELP.md
+backend/.apt_generated
+backend/.factorypath
+backend/.springBeans
+backend/.sts4-cache
 
 # Frontend - Next.js
 frontend/node_modules/
@@ -45,6 +66,18 @@ frontend/*.log
 frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
+frontend/.pnpm-debug.log*
+frontend/.pnp
+frontend/.pnp.*
+frontend/.yarn/*
+!frontend/.yarn/patches
+!frontend/.yarn/plugins
+!frontend/.yarn/releases
+!frontend/.yarn/versions
+frontend/.vercel
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+frontend/.env*
 
 # Docker
 .docker/
