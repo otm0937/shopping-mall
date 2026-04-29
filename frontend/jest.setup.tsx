@@ -103,7 +103,7 @@ jest.mock('@vapor-ui/core', () => {
       Header: createElement('div'),
       Root: createElement('div'),
     },
-    Skeleton: ({ children, ...props }: Record<string, unknown>) => (
+    Skeleton: ({ children, ...props }: { children?: ReactNode } & Record<string, unknown>) => (
       <div data-testid="skeleton" {...cleanProps(props)}>
         {children}
       </div>
