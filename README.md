@@ -9,6 +9,10 @@
 [![Docker](https://img.shields.io/badge/Docker-Compose-blue.svg)](https://docs.docker.com/compose/)
 [![MariaDB](https://img.shields.io/badge/MariaDB-11.2-blue.svg)](https://mariadb.org/)
 
+## 🌐 서비스 주소
+
+- http://13.124.240.215:3000/
+
 ## 📋 목차
 
 - [프로젝트 개요](#프로젝트-개요)
