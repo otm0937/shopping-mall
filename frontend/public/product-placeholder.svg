@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#f4f4f5"/>
+  <path d="M160 160h80v80h-80z" stroke="#a1a1aa" stroke-width="2" fill="none"/>
+  <circle cx="185" cy="185" r="8" fill="#a1a1aa"/>
+  <path d="M160 240l30-30 20 20 30-40 40 50" stroke="#a1a1aa" stroke-width="2" fill="none"/>
+  <text x="200" y="280" text-anchor="middle" font-family="system-ui" font-size="14" fill="#71717a">이미지 없음</text>
+</svg>
